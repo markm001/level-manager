@@ -1,0 +1,44 @@
+{
+  "id": "DEFAULT",
+  "requirements": [
+    {
+      "level": 1,
+      "resources": [
+        {
+          "resourceId": "SHARD_BLUE",
+          "amount": 10
+        },
+        {
+          "resourceId": "GOLD",
+          "amount": 100
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "resources": [
+        {
+          "resourceId": "SHARD_BLUE",
+          "amount": 15
+        },
+        {
+          "resourceId": "GOLD",
+          "amount": 150
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "resources": [
+        {
+          "resourceId": "SHARD_BLUE",
+          "amount": 20
+        },
+        {
+          "resourceId": "GOLD",
+          "amount": 250
+        }
+      ]
+    }
+  ]
+}
