@@ -6,9 +6,15 @@ public sealed record CostCurve(
 {
     public IReadOnlyList<ResourceCost> GetCostRequired(int level)
     {
-        return Requirements
-            .First(x => x.Level == level)
-            .Resources;
+        var requirement = Requirements.First(x => x.Level == level);
+        
+        if (requirement is null)
+        {
+            throw new InvalidOperationException(
+                $"Cost curve '{Id}' does not contain requirement for level {level}.");
+        }
+        
+        return requirement.Resources;
     }
 }
 

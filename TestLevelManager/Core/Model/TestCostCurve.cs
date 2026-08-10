@@ -30,4 +30,17 @@ public class TestCostCurve
         Assert.AreEqual(goldId, actualCost[1].ResourceId);
         Assert.AreEqual(goldAmount, actualCost[1].Amount);
     }
+    
+    [TestMethod]
+    public void GetResourcesRequired_ForMissingLevel_ThrowsException()
+    {
+        
+        var levelOne = new CostRequirement(1, []);
+        
+        CostCurve curve = new CostCurve("TEST",[levelOne]);
+
+        Assert.Throws<InvalidOperationException>(
+            () => curve.GetCostRequired(5)
+        );
+    }
 }

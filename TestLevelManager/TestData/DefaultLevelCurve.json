@@ -1,7 +1,7 @@
 {
   "id": "DEFAULT",
-  "maxLevel": 80,
-  "levels": [
+  "maxLevel": 5,
+  "requirements": [
     { "level": 1, "experienceRequired": 100 },
     { "level": 2, "experienceRequired": 120 },
     { "level": 3, "experienceRequired": 150 },

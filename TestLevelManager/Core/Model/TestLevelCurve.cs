@@ -20,4 +20,16 @@ public class TestLevelCurve
         
         Assert.AreEqual(expectedXp, actualXpRequired);
     }
+    
+    [TestMethod]
+    public void GetExperienceRequired_ForMissingLevel_ThrowsException()
+    {
+        var expectedXp = 50;
+        
+        var levelOne = new LevelRequirement(1, 0);
+        LevelCurve curve = new LevelCurve("TEST", 5, [levelOne]);
+
+        int actualXpRequired = curve.GetExperienceRequired(3);
+        
+    }
 }

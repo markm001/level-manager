@@ -18,7 +18,7 @@ public class TestLevelCurveRepository
             
         // Assert
         Assert.AreEqual(curveId, actual.Id);
-        Assert.AreEqual(80, actual.MaxLevel);
-        Assert.HasCount(4, actual.Levels);
+        Assert.AreEqual(5, actual.MaxLevel);
+        Assert.HasCount(4, actual.Requirements);
     }
 }
