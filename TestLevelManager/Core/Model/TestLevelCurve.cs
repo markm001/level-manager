@@ -10,7 +10,7 @@ public class TestLevelCurve
     {
         var expectedXp = 50;
         
-        var levelOne = new LevelRequirement(1, 0);
+        var levelOne = new LevelRequirement(1, 10);
         var levelTwo = new LevelRequirement(2, 20);
         var levelThree = new LevelRequirement(3, expectedXp);
         var levelFour = new LevelRequirement(4, 180);
@@ -26,10 +26,12 @@ public class TestLevelCurve
     {
         var expectedXp = 50;
         
-        var levelOne = new LevelRequirement(1, 0);
-        LevelCurve curve = new LevelCurve("TEST", 5, [levelOne]);
+        var levelOne = new LevelRequirement(1, 10);
+        LevelCurve curve = new LevelCurve("TEST", 2, [levelOne]);
 
-        int actualXpRequired = curve.GetExperienceRequired(3);
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () =>  curve.GetExperienceRequired(3)    
+        );
         
     }
 }

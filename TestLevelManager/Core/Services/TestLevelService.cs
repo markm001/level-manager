@@ -21,7 +21,7 @@ public class TestLevelService
     {
         var card = new TestCard();
         
-        LevelCurve curve = new LevelCurve("TEST", 3, [
+        LevelCurve curve = new LevelCurve("TEST", 4, [
             new LevelRequirement(1, 10),
             new LevelRequirement(2, 50),
             new LevelRequirement(3, 80),
@@ -47,9 +47,7 @@ public class TestLevelService
         
         LevelCurve curve = new LevelCurve("TEST", maxLevel, [
             new LevelRequirement(1, 10),
-            new LevelRequirement(2, 50),
-            new LevelRequirement(3, 80),
-            new LevelRequirement(4, 120),
+            new LevelRequirement(2, 50)
         ]);
         
         LevelService service = new LevelService();
@@ -63,4 +61,23 @@ public class TestLevelService
         
         Assert.AreEqual(maxLevel, card.Progress.Level);
     }
+    
+    [TestMethod]
+    public void TestAddExperience_MinusOne_ThrowsException()
+    {
+        var card = new TestCard();
+        var maxLevel = 2;
+        
+        LevelCurve curve = new LevelCurve("TEST", maxLevel, [
+            new LevelRequirement(1, 10)
+        ]);
+        
+        LevelService service = new LevelService();
+
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => service.AddExperience(card.Progress, curve,-1)
+        );
+    }
+    
+    
 }

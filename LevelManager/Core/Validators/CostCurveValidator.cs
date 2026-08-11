@@ -16,8 +16,16 @@ public static class CostCurveValidator
             requirements,
             x => x.Level);
 
+        var levels = new HashSet<int>();
+        
         foreach (var requirement in requirements)
         {
+            if (!levels.Add(requirement.Level))
+            {
+                throw new ArgumentException(
+                    $"Level '{requirement.Level}' cannot be declared more than once.");
+            }
+            
             ValidateResources(requirement);
         }
     }
