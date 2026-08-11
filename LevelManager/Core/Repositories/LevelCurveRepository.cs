@@ -1,6 +1,6 @@
 using System.Text.Json;
-using CardManager.Util;
 using LevelManager.Core.Models;
+using Utils;
 
 namespace LevelManager.Core.Repositories;
 
@@ -12,7 +12,7 @@ public class LevelCurveRepository: ILevelCurveRepository
     {
         _lvlCurves = curveFiles
             .Select(JsonLoader.Load)
-            .Select(json => JsonSerializer.Deserialize<LevelCurve>(json, JsonOptions.Default)!)
+            .Select(json => JsonSerializer.Deserialize<LevelCurve>(json, DefaultJsonOptions.Default)!)
             .ToDictionary(x => x.Id, x => x);
     }
 
