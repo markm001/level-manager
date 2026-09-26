@@ -32,15 +32,31 @@ public class TestCostCurve
     }
     
     [TestMethod]
-    public void GetResourcesRequired_ForMissingLevel_ThrowsException()
+    public void GetResourcesRequired_ForNegativeLevel_ThrowsException()
     {
         
         var levelOne = new CostRequirement(1, []);
         
         CostCurve curve = new CostCurve("TEST",[levelOne]);
 
-        Assert.Throws<InvalidOperationException>(
-            () => curve.GetCostRequired(5)
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => curve.GetCostRequired(-1)
         );
+    }
+    
+    [TestMethod]
+    public void GetCostRequired_ForMissingLevel_ReturnsEmpty()
+    {
+        var levelOne = new CostRequirement(
+            1, [new ResourceCost("GOLD", 100)]
+            );
+
+        var curve = new CostCurve(
+            "TEST",
+            [levelOne]);
+
+        var actual = curve.GetCostRequired(2);
+
+        Assert.IsEmpty(actual);
     }
 }
